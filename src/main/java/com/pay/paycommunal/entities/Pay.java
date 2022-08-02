@@ -1,7 +1,12 @@
 package com.pay.paycommunal.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.xml.crypto.Data;
 
+@Getter
+@Setter
 public class Pay {
     private Long id;
     private Pattern pattern;
