@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pattern")
 public class Pattern {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -22,6 +21,6 @@ public class Pattern {
     private int Iban;
     @Column(name = "goal")
     private String goal;
-    @Column(name = "phone")
-    private Long phone;
+    @Column(name = "address")
+    private Long address;
 }
