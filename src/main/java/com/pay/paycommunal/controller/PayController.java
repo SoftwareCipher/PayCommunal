@@ -37,4 +37,9 @@ public class PayController {
     public void deletePay(@PathVariable long id) {
         payServiceInterface.deletePay(id);
     }
+
+    @GetMapping("/paymentsStatusNew")
+    public List<Pay> getPaymentsStatusNew(){
+        return payServiceInterface.payStatusNew();
+    }
 }

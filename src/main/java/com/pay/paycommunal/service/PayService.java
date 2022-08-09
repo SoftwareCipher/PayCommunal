@@ -3,6 +3,7 @@ package com.pay.paycommunal.service;
 import com.pay.paycommunal.entities.Pay;
 import com.pay.paycommunal.repository.PayRepository;
 import com.pay.paycommunal.service.impl.PayServiceInterface;
+import com.pay.paycommunal.service.impl.StatusPay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -26,7 +27,7 @@ public class PayService implements PayServiceInterface {
 
     @Override
     public void saveOrUpdatePay(Pay pay) {
-        pay.setStatus("new");
+        pay.setStatus(String.valueOf(StatusPay.NEW));
         pay.setCreateTime(LocalDateTime.now());
         pay.setChangeTime(LocalDateTime.now());
         payRepository.saveAndFlush(pay);
@@ -47,5 +48,17 @@ public class PayService implements PayServiceInterface {
     @Override
     public void deletePay(long id) {
         payRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Pay> payStatusNew() {
+        return payRepository.payStatusNew();
+    }
+
+    @Override
+    public void updateStatusPay(Pay pay, StatusPay statusPay) {
+        pay.setStatus(statusPay.name());
+        pay.setChangeTime(LocalDateTime.now());
+        payRepository.save(pay);
     }
 }

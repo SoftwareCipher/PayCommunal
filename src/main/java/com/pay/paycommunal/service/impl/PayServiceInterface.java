@@ -11,4 +11,8 @@ public interface PayServiceInterface {
     Pay getPay(long id);
 
     void deletePay(long id);
+
+    List<Pay> payStatusNew();
+
+    void updateStatusPay(Pay pay, StatusPay statusPay);
 }
